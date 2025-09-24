@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Kognitos</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Kognitos">
+    <meta name="keywords" content="Kognitos">
+    <meta name="author" content="Blake WIlliford">
+  
+    <link rel="stylesheet" href="./css/style.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <ul id="optionMenu" class="options">
+        <li id="option-fadeIn" class="active" onclick="changeAnimation('fadeIn')">Fade</li>
+        <li id="option-fadeFast" onclick="changeAnimation('fadeFast')">FadeFast</li>
+        <li id="option-fadeGrow" onclick="changeAnimation('fadeGrow')">FadeGrow</li>
+        <li id="option-drawSlow" onclick="changeAnimation('drawSlow')">Draw</li>
+        <li id="option-drawFade" onclick="changeAnimation('drawFade')">DrawFade</li>
+    </ul>
+    <div id="loaderOverlay"></div>
+    <div class="bg"></div>
+    <div id="loader" class="fadeIn"></div>
+</body>
+
+<script>
+
+    window.onload = function() {
+        changeAnimation('fadeIn');
+    };
+
+    function changeAnimation(name) {
+        //Reset actives
+        optionMenu = document.getElementById("optionMenu");
+        for (let child of optionMenu.children) {
+            child.className = "";
+        }           
+
+        //Set new active
+        document.getElementById("option-"+name).classList.toggle("active");
+
+        //Reset overlay 
+        document.getElementById("loaderOverlay").classList.remove("hidden");
+
+        //Change loader
+        document.getElementById("loader").classList.remove("hidden");
+        document.getElementById("loader").className = name;
+
+        setTimeout(function() {
+            document.getElementById("loaderOverlay").classList.add("hidden");
+            document.getElementById("loader").classList.add("hidden");
+        }, 4000);
+    }
+</script>
+</html>
