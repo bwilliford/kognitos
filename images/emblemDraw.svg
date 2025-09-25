@@ -4,7 +4,7 @@
 .draw {
   stroke-dasharray: 400;
   stroke-dashoffset: 800; 
-  animation: drawThis 1s linear infinite;
+  animation: drawThis 3s linear infinite;
 }
 
 @keyframes drawThis {
