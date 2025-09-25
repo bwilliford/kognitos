@@ -65,7 +65,7 @@ body {
   position: absolute;
   top: calc(50vh - 2rem);
   left: calc(50vw - 2rem);
-  z-index: 2;
+  z-index: 3;
 }
 
 #loader.hidden {
