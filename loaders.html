@@ -14,6 +14,12 @@
 
 <body>
     <div id="loader" class="fadeIn"></div>
+    <div id="loaderPieces" class="hidden">
+        <div id="loader1"></div>
+        <div id="loader2"></div>
+        <div id="loader3"></div>
+        <div id="loader4"></div>
+    </div>
     <ul id="optionMenu" class="options">
         <li id="option-fadeIn" class="active" onclick="changeAnimation('fadeIn')">Fade</li>
         <li id="option-fadeFast" onclick="changeAnimation('fadeFast')">FadeFast</li>
@@ -21,6 +27,7 @@
         <li id="option-drawSlow" onclick="changeAnimation('drawSlow')">DrawSlow</li>
         <li id="option-drawFast" onclick="changeAnimation('drawFast')">DrawFast</li>
         <li id="option-drawFade" onclick="changeAnimation('drawFade')">DrawFade</li>
+        <li id="option-chain" onclick="changeType('chain')">Chain</li>
     </ul>
     <div id="loaderOverlay"></div>
     <div class="bg"></div>
@@ -54,5 +61,31 @@
             document.getElementById("loader").classList.add("hidden");
         }, 4000);
     }
+
+    function changeType(name) {
+        //Reset actives
+        optionMenu = document.getElementById("optionMenu");
+        for (let child of optionMenu.children) {
+            child.className = "";
+        }          
+        
+        //Reset overlay 
+        document.getElementById("loaderOverlay").classList.remove("hidden");
+        
+        //Set new active
+        document.getElementById("option-"+name).classList.toggle("active");
+
+        //Change loader
+        document.getElementById("loader").classList.add("hidden");
+        document.getElementById("loaderPieces").classList.remove("hidden");
+
+        setTimeout(function() {
+            document.getElementById("loaderOverlay").classList.add("hidden");
+            document.getElementById("loaderPieces").classList.add("hidden");
+        }, 4000);
+
+    }
+    
+    
 </script>
 </html>
